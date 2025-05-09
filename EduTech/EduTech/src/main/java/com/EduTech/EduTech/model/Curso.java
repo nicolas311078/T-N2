@@ -10,17 +10,15 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class CursoModel {
+public class Curso {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Integer id;
     @Column(unique=true, length = 13, nullable = false)
-    private String run;
+    private String CodigoClase;
 
     @Column(nullable = false)
     private String nombres;
 
-    @Column(nullable = false)
-    private String tipocurso;
 
 }
