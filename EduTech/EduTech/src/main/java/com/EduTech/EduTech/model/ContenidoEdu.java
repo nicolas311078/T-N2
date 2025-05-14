@@ -14,9 +14,9 @@ public class ContenidoEdu {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private long id;
 
-    @Column (nullable = false)
+    @Column (nullable = true)
     private String actividad;
 
     @Column (nullable = true)

@@ -14,11 +14,10 @@ public class Curso {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Integer id;
-    @Column(unique=true, length = 13, nullable = false)
-    private String CodigoClase;
-
     @Column(nullable = false)
-    private String nombres;
+    private String Docente;
+    @Column(nullable = false)
+    private Integer AlumnosTotales;
 
 
 }
