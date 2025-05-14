@@ -46,7 +46,7 @@ public class SoporteTecController {
         try {
             SoporteTec pac = soporteTecService.findById(numeroConsulta);
             pac.setNumeroConsulta(numeroConsulta);
-            pac.setTipoIncidecia(soporteTec.getTipoIncidecia());
+            pac.setTipoIncidencia(soporteTec.getTipoIncidencia());
             pac.setDescripcion(soporteTec.getDescripcion());
             pac.setCorreoSolicitante(soporteTec.getCorreoSolicitante());
 

@@ -17,12 +17,12 @@ public class SoporteTec {
     private Long numeroConsulta;
 
     @Column(nullable = false)
-    private String tipoIncidecia;
+    private String tipoIncidencia;
 
     @Column (nullable = false)
     private String descripcion;
 
     @Column (nullable = false)
-    private String CorreoSolicitante;
+    private String correoSolicitante;
 
 }
