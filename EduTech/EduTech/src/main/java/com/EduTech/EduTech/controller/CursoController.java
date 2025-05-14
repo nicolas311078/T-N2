@@ -51,8 +51,7 @@ public class    CursoController {
         try{
             Curso cur = cursoService.findById(id);
             cur.setId(id);
-            cur.setCodigoClase(curso.getCodigoClase());
-            cur.setNombres(curso.getNombres());
+            cur.setDocente(curso.getDocente());
 
             cursoService.save(cur);
             return ResponseEntity.ok(curso);
