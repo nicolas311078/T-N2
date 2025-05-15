@@ -4,7 +4,6 @@ import com.EduTech.EduTech.model.Valoracion;
 import com.EduTech.EduTech.service.ValoracionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,7 +26,7 @@ public class ValoracionController {
         return ResponseEntity.ok(valoraciones);
     }
 
-    @GetMapping("/{id}")
+    @PostMapping("/{id}")
     public ResponseEntity<Valoracion> guardar(@RequestBody Valoracion valoracion){
         Valoracion nuevaValoracion= valoracionService.save(valoracion);
         return ResponseEntity.status(HttpStatus.CREATED).body(nuevaValoracion);
@@ -43,6 +42,7 @@ public class ValoracionController {
             return  ResponseEntity.notFound().build();
         }
     }
+
     @PutMapping("/{id}")
     public ResponseEntity<Valoracion> actualizar(@PathVariable Integer id,@RequestBody Valoracion valoracion){
         try{
