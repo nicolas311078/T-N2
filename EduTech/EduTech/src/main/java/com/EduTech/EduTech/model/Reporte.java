@@ -23,6 +23,6 @@ public class Reporte {
     private String descripcion;
 
     @Column (nullable = false)
-    private String CorreoSolicitante;
+    private String correoSolicitante;
 
 }
