@@ -1,8 +1,5 @@
 package com.EduTech.EduTech.service;
 
-import com.EduTech.EduTech.model.Curso;
-import com.EduTech.EduTech.model.Valoracion;
-import com.EduTech.EduTech.repository.ValoracionRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
