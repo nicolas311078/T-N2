@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 public class Curso {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Integer id;
+    private long id;
 
     @Column(nullable = false)
     private String docente;

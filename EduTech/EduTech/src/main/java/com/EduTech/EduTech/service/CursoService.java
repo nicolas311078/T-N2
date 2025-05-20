@@ -12,6 +12,7 @@ import java.util.List;
 public class CursoService {
     @Autowired
     private CursoRepository cursoRepository;
+
     public List<Curso> findAll(){return cursoRepository.findAll();}
 
     public Curso findById(long id){return cursoRepository.findById(id).get();}
