@@ -1,0 +1,107 @@
+<html>
+<head>
+<title>DataLoader.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #6aab73;}
+.s4 { color: #7a7e85;}
+.s5 { color: #2aacb8;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+DataLoader.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com</span><span class="s2">.</span><span class="s1">EduTech</span><span class="s2">.</span><span class="s1">EduTech</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">com</span><span class="s2">.</span><span class="s1">EduTech</span><span class="s2">.</span><span class="s1">EduTech</span><span class="s2">.</span><span class="s1">model</span><span class="s2">.</span><span class="s1">ContenidoEdu</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">com</span><span class="s2">.</span><span class="s1">EduTech</span><span class="s2">.</span><span class="s1">EduTech</span><span class="s2">.</span><span class="s1">controller</span><span class="s2">.</span><span class="s1">ContenidoEduController</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">com</span><span class="s2">.</span><span class="s1">EduTech</span><span class="s2">.</span><span class="s1">EduTech</span><span class="s2">.</span><span class="s1">controller</span><span class="s2">.</span><span class="s1">CursoController</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">com</span><span class="s2">.</span><span class="s1">EduTech</span><span class="s2">.</span><span class="s1">EduTech</span><span class="s2">.</span><span class="s1">controller</span><span class="s2">.</span><span class="s1">SoporteTecController</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">com</span><span class="s2">.</span><span class="s1">EduTech</span><span class="s2">.</span><span class="s1">EduTech</span><span class="s2">.</span><span class="s1">controller</span><span class="s2">.</span><span class="s1">UsuarioController</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">com</span><span class="s2">.</span><span class="s1">EduTech</span><span class="s2">.</span><span class="s1">EduTech</span><span class="s2">.</span><span class="s1">model</span><span class="s2">.</span><span class="s1">ContenidoEdu</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">net</span><span class="s2">.</span><span class="s1">datafaker</span><span class="s2">.</span><span class="s1">Faker</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">springframework</span><span class="s2">.</span><span class="s1">beans</span><span class="s2">.</span><span class="s1">factory</span><span class="s2">.</span><span class="s1">annotation</span><span class="s2">.</span><span class="s1">Autowired</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">springframework</span><span class="s2">.</span><span class="s1">boot</span><span class="s2">.</span><span class="s1">CommandLineRunner</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">springframework</span><span class="s2">.</span><span class="s1">context</span><span class="s2">.</span><span class="s1">annotation</span><span class="s2">.</span><span class="s1">Profile</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">springframework</span><span class="s2">.</span><span class="s1">stereotype</span><span class="s2">.</span><span class="s1">Component</span><span class="s2">;</span>
+
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">util</span><span class="s2">.</span><span class="s1">Random</span><span class="s2">;</span>
+
+<span class="s1">@Profile</span><span class="s2">(</span><span class="s3">&quot;dev&quot;</span><span class="s2">)</span>
+<span class="s1">@Component</span>
+<span class="s0">public class </span><span class="s1">DataLoader </span><span class="s0">implements </span><span class="s1">CommandLineRunner </span><span class="s2">{</span>
+    <span class="s1">@Autowired</span>
+    <span class="s0">private </span><span class="s1">ContenidoEduController contenidoEduController</span><span class="s2">;</span>
+    <span class="s1">@Autowired</span>
+    <span class="s0">private </span><span class="s1">CursoController cursoController</span><span class="s2">;</span>
+    <span class="s1">@Autowired</span>
+    <span class="s0">private </span><span class="s1">SoporteTecController soporteTecController</span><span class="s2">;</span>
+    <span class="s1">@Autowired</span>
+    <span class="s0">private </span><span class="s1">UsuarioController usuarioController</span><span class="s2">;</span>
+
+    <span class="s1">@Override</span>
+    <span class="s0">public void </span><span class="s1">run</span><span class="s2">(</span><span class="s1">String... args</span><span class="s2">) </span><span class="s0">throws </span><span class="s1">Exception </span><span class="s2">{</span>
+        <span class="s1">Faker faker </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Faker</span><span class="s2">();</span>
+        <span class="s1">Random random </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Random</span><span class="s2">();</span>
+        <span class="s4">// Generar tipos de contenido</span>
+        <span class="s0">for </span><span class="s2">(</span><span class="s0">int </span><span class="s1">i </span><span class="s2">= </span><span class="s5">0</span><span class="s2">; </span><span class="s1">i </span><span class="s2">&lt; </span><span class="s5">3</span><span class="s2">; </span><span class="s1">i</span><span class="s2">++) {</span>
+            <span class="s1">ContenidoEdu contenidoEdu </span><span class="s2">= </span><span class="s0">new </span><span class="s1">ContenidoEdu</span><span class="s2">();</span>
+            <span class="s1">ContenidoEdu</span><span class="s2">. (</span><span class="s1">i </span><span class="s2">+ </span><span class="s5">1</span><span class="s2">);</span>
+            <span class="s1">tipoSala</span><span class="s2">.</span><span class="s1">setNombre</span><span class="s2">(</span><span class="s1">faker</span><span class="s2">.</span><span class="s1">book</span><span class="s2">().</span><span class="s1">genre</span><span class="s2">());</span>
+            <span class="s1">tipoSalaRepository</span><span class="s2">.</span><span class="s1">save</span><span class="s2">(</span><span class="s1">tipoSala</span><span class="s2">);</span>
+        <span class="s2">}</span>
+        <span class="s4">// Generar carreras</span>
+        <span class="s0">for </span><span class="s2">(</span><span class="s0">int </span><span class="s1">i </span><span class="s2">= </span><span class="s5">0</span><span class="s2">; </span><span class="s1">i </span><span class="s2">&lt; </span><span class="s5">5</span><span class="s2">; </span><span class="s1">i</span><span class="s2">++) {</span>
+            <span class="s1">Carrera carrera </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Carrera</span><span class="s2">();</span>
+            <span class="s1">carrera</span><span class="s2">.</span><span class="s1">setCodigo</span><span class="s2">(</span><span class="s1">faker</span><span class="s2">.</span><span class="s1">code</span><span class="s2">().</span><span class="s1">asin</span><span class="s2">());</span>
+            <span class="s1">carrera</span><span class="s2">.</span><span class="s1">setNombre</span><span class="s2">(</span><span class="s1">faker</span><span class="s2">.</span><span class="s1">educator</span><span class="s2">().</span><span class="s1">course</span><span class="s2">());</span>
+            <span class="s1">carreraRepository</span><span class="s2">.</span><span class="s1">save</span><span class="s2">(</span><span class="s1">carrera</span><span class="s2">);</span>
+        <span class="s2">}</span>
+        <span class="s1">List</span><span class="s2">&lt;</span><span class="s1">Carrera</span><span class="s2">&gt; </span><span class="s1">carreras </span><span class="s2">= </span><span class="s1">carreraRepository</span><span class="s2">.</span><span class="s1">findAll</span><span class="s2">();</span>
+        <span class="s4">// Generar estudiantes</span>
+        <span class="s0">for </span><span class="s2">(</span><span class="s0">int </span><span class="s1">i </span><span class="s2">= </span><span class="s5">0</span><span class="s2">; </span><span class="s1">i </span><span class="s2">&lt; </span><span class="s5">50</span><span class="s2">; </span><span class="s1">i</span><span class="s2">++) {</span>
+            <span class="s1">Estudiante estudiante </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Estudiante</span><span class="s2">();</span>
+            <span class="s1">estudiante</span><span class="s2">.</span><span class="s1">setId</span><span class="s2">(</span><span class="s1">i </span><span class="s2">+ </span><span class="s5">1</span><span class="s2">);</span>
+            <span class="s1">estudiante</span><span class="s2">.</span><span class="s1">setRun</span><span class="s2">(</span><span class="s1">faker</span><span class="s2">.</span><span class="s1">idNumber</span><span class="s2">().</span><span class="s1">valid</span><span class="s2">());</span>
+            <span class="s1">estudiante</span><span class="s2">.</span><span class="s1">setNombres</span><span class="s2">(</span><span class="s1">faker</span><span class="s2">.</span><span class="s1">name</span><span class="s2">().</span><span class="s1">fullName</span><span class="s2">());</span>
+            <span class="s1">estudiante</span><span class="s2">.</span><span class="s1">setCorreo</span><span class="s2">(</span><span class="s1">faker</span><span class="s2">.</span><span class="s1">internet</span><span class="s2">().</span><span class="s1">emailAddress</span><span class="s2">());</span>
+            <span class="s1">estudiante</span><span class="s2">.</span><span class="s1">setJornada</span><span class="s2">(</span><span class="s1">faker</span><span class="s2">.</span><span class="s1">options</span><span class="s2">().</span><span class="s1">option</span><span class="s2">(</span><span class="s3">&quot;D&quot;</span><span class="s2">, </span><span class="s3">&quot;N&quot;</span><span class="s2">).</span><span class="s1">charAt</span><span class="s2">(</span><span class="s5">0</span><span class="s2">));</span>
+            <span class="s1">estudiante</span><span class="s2">.</span><span class="s1">setTelefono</span><span class="s2">(</span><span class="s1">faker</span><span class="s2">.</span><span class="s1">number</span><span class="s2">().</span><span class="s1">numberBetween</span><span class="s2">(</span><span class="s5">100000000</span><span class="s2">, </span><span class="s5">999999999</span><span class="s2">));</span>
+            <span class="s1">estudiante</span><span class="s2">.</span><span class="s1">setCarrera</span><span class="s2">(</span><span class="s1">carreras</span><span class="s2">.</span><span class="s1">get</span><span class="s2">(</span><span class="s1">random</span><span class="s2">.</span><span class="s1">nextInt</span><span class="s2">(</span><span class="s1">carreras</span><span class="s2">.</span><span class="s1">size</span><span class="s2">())));</span>
+            <span class="s1">estudianteRepository</span><span class="s2">.</span><span class="s1">save</span><span class="s2">(</span><span class="s1">estudiante</span><span class="s2">);</span>
+        <span class="s2">}</span>
+        <span class="s4">// Generar salas</span>
+        <span class="s0">for </span><span class="s2">(</span><span class="s0">int </span><span class="s1">i </span><span class="s2">= </span><span class="s5">0</span><span class="s2">; </span><span class="s1">i </span><span class="s2">&lt; </span><span class="s5">10</span><span class="s2">; </span><span class="s1">i</span><span class="s2">++) {</span>
+            <span class="s1">Sala sala </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Sala</span><span class="s2">();</span>
+            <span class="s1">sala</span><span class="s2">.</span><span class="s1">setCodigo</span><span class="s2">(</span><span class="s1">i </span><span class="s2">+ </span><span class="s5">1</span><span class="s2">);</span>
+            <span class="s1">sala</span><span class="s2">.</span><span class="s1">setNombre</span><span class="s2">(</span><span class="s1">faker</span><span class="s2">.</span><span class="s1">university</span><span class="s2">().</span><span class="s1">name</span><span class="s2">());</span>
+            <span class="s1">sala</span><span class="s2">.</span><span class="s1">setCapacidad</span><span class="s2">(</span><span class="s1">faker</span><span class="s2">.</span><span class="s1">number</span><span class="s2">().</span><span class="s1">numberBetween</span><span class="s2">(</span><span class="s5">10</span><span class="s2">, </span><span class="s5">100</span><span class="s2">));</span>
+            <span class="s1">sala</span><span class="s2">.</span><span class="s1">setIdInstituo</span><span class="s2">(</span><span class="s1">faker</span><span class="s2">.</span><span class="s1">number</span><span class="s2">().</span><span class="s1">randomDigit</span><span class="s2">());</span>
+            <span class="s1">sala</span><span class="s2">.</span><span class="s1">setTipoSala</span><span class="s2">(</span><span class="s1">tipoSalaRepository</span><span class="s2">.</span><span class="s1">findAll</span><span class="s2">().</span><span class="s1">get</span><span class="s2">(</span><span class="s1">random</span><span class="s2">.</span><span class="s1">nextInt</span><span class="s2">(</span><span class="s5">3</span><span class="s2">)));</span>
+            <span class="s1">salaRepository</span><span class="s2">.</span><span class="s1">save</span><span class="s2">(</span><span class="s1">sala</span><span class="s2">);</span>
+        <span class="s2">}</span>
+        <span class="s1">List</span><span class="s2">&lt;</span><span class="s1">Estudiante</span><span class="s2">&gt; </span><span class="s1">estudiantes </span><span class="s2">= </span><span class="s1">estudianteRepository</span><span class="s2">.</span><span class="s1">findAll</span><span class="s2">();</span>
+        <span class="s1">List</span><span class="s2">&lt;</span><span class="s1">Sala</span><span class="s2">&gt; </span><span class="s1">salas </span><span class="s2">= </span><span class="s1">salaRepository</span><span class="s2">.</span><span class="s1">findAll</span><span class="s2">();</span>
+        <span class="s4">// Generar reservas</span>
+        <span class="s0">for </span><span class="s2">(</span><span class="s0">int </span><span class="s1">i </span><span class="s2">= </span><span class="s5">0</span><span class="s2">; </span><span class="s1">i </span><span class="s2">&lt; </span><span class="s5">20</span><span class="s2">; </span><span class="s1">i</span><span class="s2">++) {</span>
+            <span class="s1">Reserva reserva </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Reserva</span><span class="s2">();</span>
+            <span class="s1">reserva</span><span class="s2">.</span><span class="s1">setId</span><span class="s2">(</span><span class="s1">i </span><span class="s2">+ </span><span class="s5">1</span><span class="s2">);</span>
+            <span class="s1">reserva</span><span class="s2">.</span><span class="s1">setEstudiante</span><span class="s2">(</span><span class="s1">estudiantes</span><span class="s2">.</span><span class="s1">get</span><span class="s2">(</span><span class="s1">random</span><span class="s2">.</span><span class="s1">nextInt</span><span class="s2">(</span><span class="s1">estudiantes</span><span class="s2">.</span><span class="s1">size</span><span class="s2">())));</span>
+            <span class="s1">reserva</span><span class="s2">.</span><span class="s1">setSala</span><span class="s2">(</span><span class="s1">salas</span><span class="s2">.</span><span class="s1">get</span><span class="s2">(</span><span class="s1">random</span><span class="s2">.</span><span class="s1">nextInt</span><span class="s2">(</span><span class="s1">salas</span><span class="s2">.</span><span class="s1">size</span><span class="s2">())));</span>
+            <span class="s1">reserva</span><span class="s2">.</span><span class="s1">setFechaSolicitada</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Date</span><span class="s2">());</span>
+            <span class="s1">reserva</span><span class="s2">.</span><span class="s1">setHoraSolicitada</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Date</span><span class="s2">());</span>
+            <span class="s1">reserva</span><span class="s2">.</span><span class="s1">setHoraCierre</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Date</span><span class="s2">(</span><span class="s1">System</span><span class="s2">.</span><span class="s1">currentTimeMillis</span><span class="s2">() +</span>
+                    <span class="s1">faker</span><span class="s2">.</span><span class="s1">number</span><span class="s2">().</span><span class="s1">numberBetween</span><span class="s2">(</span><span class="s5">3600000</span><span class="s2">, </span><span class="s5">7200000</span><span class="s2">))); </span><span class="s4">// 1-2 horas más</span>
+            <span class="s1">reserva</span><span class="s2">.</span><span class="s1">setEstado</span><span class="s2">(</span><span class="s1">faker</span><span class="s2">.</span><span class="s1">number</span><span class="s2">().</span><span class="s1">numberBetween</span><span class="s2">(</span><span class="s5">0</span><span class="s2">, </span><span class="s5">2</span><span class="s2">));</span>
+            <span class="s1">reservaRepository</span><span class="s2">.</span><span class="s1">save</span><span class="s2">(</span><span class="s1">reserva</span><span class="s2">);</span>
+        <span class="s2">}</span>
+    <span class="s2">}</span>
+<span class="s2">}</span>
+</pre>
+</body>
+</html>
