@@ -14,7 +14,7 @@ public class SoporteTec {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long numeroConsulta;
+    private long numeroConsulta;
 
     @Column(nullable = false)
     private String tipoIncidencia;
