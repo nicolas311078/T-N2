@@ -15,13 +15,13 @@ public class CursoService {
 
     public List<Curso> findAll(){return cursoRepository.findAll();}
 
-    public Curso findById(long id){return cursoRepository.findById(id).get();}
+    public Curso findById(Integer id){return cursoRepository.findById(id).get();}
 
     public Curso save(Curso curso) {
         return cursoRepository.save(curso);
     }
 
-    public void delete(Long id) {
+    public void delete(Integer id) {
         cursoRepository.deleteById(id);
     }
 }
