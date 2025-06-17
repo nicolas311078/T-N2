@@ -57,7 +57,7 @@ public class ContenidoEduController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> eliminar(@PathVariable long id) {
+    public ResponseEntity<?> eliminar(@PathVariable Integer id) {
         try {
             contenidoEduService.delete(id);
             return ResponseEntity.noContent().build();

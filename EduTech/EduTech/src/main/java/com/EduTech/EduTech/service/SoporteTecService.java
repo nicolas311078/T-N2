@@ -19,7 +19,7 @@ public class SoporteTecService {
         return soporteTecRepository.findAll();
     }
 
-    public SoporteTec findById(Long numeroConsulta) {
+    public SoporteTec findById(long numeroConsulta) {
         return soporteTecRepository.findById(numeroConsulta).get();
     }
 
@@ -27,7 +27,7 @@ public class SoporteTecService {
         return soporteTecRepository.save(soporteTec);
     }
 
-    public void delete(Long numeroConsulta) {
+    public void delete(long numeroConsulta) {
         soporteTecRepository.deleteById(numeroConsulta);
     }
 }
