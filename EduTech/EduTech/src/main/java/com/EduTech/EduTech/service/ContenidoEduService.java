@@ -15,13 +15,13 @@ public class ContenidoEduService {
 
     public List<ContenidoEdu> findAll(){return contenidoEduRepository.findAll();}
 
-    public ContenidoEdu findById(long id){return contenidoEduRepository.findById(id).get();}
+    public ContenidoEdu findById(Integer id){return contenidoEduRepository.findById(id).get();}
 
     public ContenidoEdu save(ContenidoEdu contenidoEdu) {
         return contenidoEduRepository.save(contenidoEdu);
     }
 
-    public void delete(long id) {
+    public void deleteById(Integer id) {
         contenidoEduRepository.deleteById(id);
     }
 }

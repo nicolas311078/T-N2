@@ -21,7 +21,7 @@ public class CursoService {
         return cursoRepository.save(curso);
     }
 
-    public void delete(Integer id) {
+    public void deleteById(Integer id) {
         cursoRepository.deleteById(id);
     }
 }

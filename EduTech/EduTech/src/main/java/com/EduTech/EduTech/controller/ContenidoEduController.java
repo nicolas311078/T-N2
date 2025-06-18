@@ -59,7 +59,7 @@ public class ContenidoEduController {
     @DeleteMapping("/{id}")
     public ResponseEntity<?> eliminar(@PathVariable Integer id) {
         try {
-            contenidoEduService.delete(id);
+            contenidoEduService.deleteById(id);
             return ResponseEntity.noContent().build();
         } catch (Exception e ) {
             return ResponseEntity.notFound().build();

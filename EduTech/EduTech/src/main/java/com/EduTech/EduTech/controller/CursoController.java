@@ -63,7 +63,7 @@ public class    CursoController {
     @DeleteMapping("/{id}")
     public ResponseEntity<?> eliminar(@PathVariable Integer id){
         try{
-            cursoService.delete(id);
+            cursoService.deleteById(id);
             return ResponseEntity.noContent().build();
         } catch (Exception e) {
             return ResponseEntity.notFound().build();
