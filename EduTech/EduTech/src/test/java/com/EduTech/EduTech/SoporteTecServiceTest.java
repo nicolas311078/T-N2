@@ -31,54 +31,54 @@ public class SoporteTecServiceTest {
     @Test
     public void testFindAll(){
         // Define el comportamiento del mock: cuando se llame a findAll(), devuelve una lista con una Carrera.
-        when(soporteTecRepository.findAll()).thenReturn(List.of(new Curso(1, "Carlo Pfeffer", "Associate Degree in Nursing", 26)));
+        when(soporteTecRepository.findAll()).thenReturn(List.of(new SoporteTec(1, "Carlo Pfeffer", "Associate Degree in Nursing", "descripcion del soporte")));
 
         // Llama al método findAll() del servicio.
         List<SoporteTec> soporteTecs = soporteTecService.findAll();
 
         // Verifica que la lista devuelta no sea nula y contenga exactamente una Carrera.
-        assertNotNull(cursos);
-        assertEquals(1, cursos.size());
+        assertNotNull(soporteTecs);
+        assertEquals(1, soporteTecs.size());
     }
 
     @Test
     public void testFindById() {
         Integer id = 1;
-        Curso curso = new Curso(id, "Carlo Pfeffer", "Associate Degree in Nursing", 26);
+        SoporteTec soporteTec = new SoporteTec(id, "Carlo Pfeffer", "Associate Degree in Nursing", "descripcion del soporte");
 
-        when(cursoRepository.findById(id)).thenReturn(Optional.of(curso));
+        when(soporteTecRepository.findById(id)).thenReturn(Optional.of(soporteTec));
 
-        Curso found = cursoService.findById(id);
+        SoporteTec found = soporteTecService.findById(id);
 
         assertNotNull(found);
-        assertEquals(id, found.getId());
+        assertEquals(id, found.getNumeroConsulta());
     }
 
     @Test
     public void testSave() {
-        Curso curso = new Curso(1, "Carlo Pfeffer", "Associate Degree in Nursing", 26);
+        SoporteTec soporteTec = new SoporteTec(1, "Carlo Pfeffer", "Associate Degree in Nursing", "descripcion del soporte");
 
         // Define el comportamiento del mock: cuando se llame a save(), devuelve la Carrera proporcionada.
-        when(cursoRepository.save(curso)).thenReturn(curso);
+        when(soporteTecRepository.save(soporteTec)).thenReturn(soporteTec);
 
         // Llama al método save() del servicio.
-        Curso saved = cursoService.save(curso);
+        SoporteTec saved = soporteTecService.save(soporteTec);
 
         // Verifica que la Carrera guardada no sea nula y que su nombre coincida con el nombre esperado.
         assertNotNull(saved);
-        assertEquals("Associate Degree in Nursing", saved.getNombreCurso());
+        assertEquals("Carlo Pfeffer", saved.getTipoIncidencia());
     }
 
     @Test
     public void testDeleteById() {
-        Integer id = 1;
+        Integer numeroConsulta = 1;
 
-        doNothing().when(cursoRepository).deleteById(id);
+        doNothing().when(soporteTecRepository).deleteById(numeroConsulta);
 
-        cursoService.deleteById(id);
+        soporteTecService.delete(1);
 
-        verify(cursoRepository, times(1)).deleteById(id);
+        verify(soporteTecRepository, times(1)).deleteById(numeroConsulta);
     }
 
 }
-}
+

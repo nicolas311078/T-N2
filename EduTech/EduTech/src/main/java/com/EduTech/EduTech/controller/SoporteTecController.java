@@ -32,7 +32,7 @@ public class SoporteTecController {
     }
 
     @GetMapping("/{numeroConsulta}")
-    public ResponseEntity<SoporteTec> buscar(@PathVariable Long numeroConsulta) {
+    public ResponseEntity<SoporteTec> buscar(@PathVariable Integer numeroConsulta) {
         try {
             SoporteTec soporteTec = soporteTecService.findById(numeroConsulta);
             return ResponseEntity.ok(soporteTec);
@@ -42,7 +42,7 @@ public class SoporteTecController {
     }
 
     @PutMapping("/{numeroConsulta}")
-    public ResponseEntity<SoporteTec> actualizar(@PathVariable Long numeroConsulta, @RequestBody SoporteTec soporteTec) {
+    public ResponseEntity<SoporteTec> actualizar(@PathVariable Integer numeroConsulta, @RequestBody SoporteTec soporteTec) {
         try {
             SoporteTec pac = soporteTecService.findById(numeroConsulta);
             pac.setNumeroConsulta(numeroConsulta);
@@ -58,7 +58,7 @@ public class SoporteTecController {
     }
 
     @DeleteMapping("/{numeroConsulta}")
-    public ResponseEntity<?> eliminar(@PathVariable Long numeroConsulta) {
+    public ResponseEntity<?> eliminar(@PathVariable Integer numeroConsulta) {
         try {
             soporteTecService.delete(numeroConsulta);
             return ResponseEntity.noContent().build();
