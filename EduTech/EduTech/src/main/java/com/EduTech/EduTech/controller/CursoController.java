@@ -36,7 +36,7 @@ public class    CursoController {
 
 
     @PostMapping
-    @Operation(summary = "Crear curso ", description = "Crea un curso")
+    @Operation(summary = "Crear curso ", description = "Crea un nuevo curso")
     @ApiResponses(value= {
             @ApiResponse(responseCode = "200", description = "Curso creado exitosamente"),
             @ApiResponse(responseCode = "404", description = "curso no encontrado")
@@ -48,7 +48,7 @@ public class    CursoController {
 
 
     @GetMapping("/{id}")
-    @Operation(summary = "Obtener curso ", description = "Obtiene una lista con todos los cursos")
+    @Operation(summary = "Obtener un curso por codigo ", description = "Obtiene curso via codigo")
     public ResponseEntity<Curso> buscar(@PathVariable Integer id){
         try{
             Curso curso = cursoService.findById(id);
@@ -61,7 +61,7 @@ public class    CursoController {
 
 
     @PutMapping("/{id}")
-    @Operation(summary = "Actualizar curso", description = "Actualiza un curso existente")
+    @Operation(summary = "Actualizar un curso", description = "Actualiza un curso existente")
     @ApiResponses(value= {
             @ApiResponse(responseCode = "200", description = "Curso actualizado exitosamente",
                     content =@Content(mediaType = "aplication/json",
@@ -82,7 +82,7 @@ public class    CursoController {
         }
     }
     @DeleteMapping("/{id}")
-    @Operation(summary = "Eliminar Curso ", description = "Elimina un curso existente")
+    @Operation(summary = "Eliminar un Curso ", description = "Elimina un curso existente")
     @ApiResponses(value= {
             @ApiResponse(responseCode = "200", description = "Curso Eliminado exitosamente"),
             @ApiResponse(responseCode = "404", description = "Curso no encontrado")

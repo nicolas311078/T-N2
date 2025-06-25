@@ -23,8 +23,13 @@ public class ContenidoEduController {
     private ContenidoEduService contenidoEduService;
 
     @GetMapping
-    @Operation(summary = "Obtener contenido de los cursos ", description = "Obtiene una lista con todos lo relacionado con el curso")
+    @Operation(summary = "Obtener todos los contenido", description = "Obtiene una lista con todos lo relacionado con contenido")
+    @ApiResponses(value= {
+            @ApiResponse(responseCode = "200", description = "Contenido obtenido exitosamente"),
+            @ApiResponse(responseCode = "404", description = "Error al obtener el Contenido")
+    })
     public ResponseEntity<List<ContenidoEdu>> lister() {
+
         List<ContenidoEdu> contenidoEdus = contenidoEduService.findAll();
         if (contenidoEdus.isEmpty()) {
             return ResponseEntity.noContent().build();
@@ -44,7 +49,11 @@ public class ContenidoEduController {
     }
 
     @GetMapping("/{id}")
-    @Operation(summary = "Obtener contenido ", description = "Obtiene una lista con todo el contenido")
+    @Operation(summary = "Obtener contenido por codigo", description = "Obtiene una lista con todo el contenido")
+    @ApiResponses(value= {
+            @ApiResponse(responseCode = "200", description = "Contenido obtenido exitosamente"),
+            @ApiResponse(responseCode = "404", description = "Error al obtener el Contenido")
+    })
     public ResponseEntity<ContenidoEdu> buscar(@PathVariable Integer id) {
         try {
             ContenidoEdu contenidoEdu = contenidoEduService.findById(id);
@@ -55,7 +64,7 @@ public class ContenidoEduController {
     }
 
     @PutMapping("/{id}")
-    @Operation(summary = "Actualizar contenido ", description = "Actualiza el contenido existente")
+    @Operation(summary = "Actualizar un contenido ", description = "Actualiza el contenido existente")
     @ApiResponses(value= {
             @ApiResponse(responseCode = "200", description = "Contenido actualizado exitosamente",
                     content =@Content(mediaType = "aplication/json",

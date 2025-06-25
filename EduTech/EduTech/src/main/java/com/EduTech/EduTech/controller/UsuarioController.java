@@ -46,7 +46,7 @@ public class UsuarioController {
     }
 
     @GetMapping("/{id}")
-    @Operation(summary = "Obtener contenido de los cursos ", description = "Obtiene una lista con todos lo relacionado con el curso")
+    @Operation(summary = "Obtener curso por codigo ", description = "Obtiene un curso por codigo")
     public ResponseEntity<Usuario> buscar(@PathVariable Integer id) {
         try {
             Usuario usuario = usuarioService.findById(id);
