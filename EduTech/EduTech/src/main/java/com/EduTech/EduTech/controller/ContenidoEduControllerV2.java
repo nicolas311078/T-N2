@@ -1,5 +1,5 @@
 package com.EduTech.EduTech.controller;
-import com.EduTech.EduTech.assemblers.ContenidoEduAssembler;
+import com.EduTech.EduTech.assemblers.ContenidoEduModelAssembler;
 import com.EduTech.EduTech.model.ContenidoEdu;
 import com.EduTech.EduTech.service.ContenidoEduService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +20,7 @@ public class ContenidoEduControllerV2 {
     private ContenidoEduService contenidoEduService;
 
     @Autowired
-    private ContenidoEduAssembler assembler;
+    private ContenidoEduModelAssembler assembler;
     @GetMapping(produces = MediaTypes.HAL_JSON_VALUE)
     public CollectionModel<EntityModel<ContenidoEdu>> getAllContenidos() {
         List<EntityModel<ContenidoEdu>> contenidos = contenidoEduService.findAll().stream()
