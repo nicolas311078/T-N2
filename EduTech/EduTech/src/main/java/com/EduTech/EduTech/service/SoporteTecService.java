@@ -27,7 +27,7 @@ public class SoporteTecService {
         return soporteTecRepository.save(soporteTec);
     }
 
-    public void delete(Integer numeroConsulta) {
+    public void deleteById(Integer numeroConsulta) {
         soporteTecRepository.deleteById(numeroConsulta);
     }
 }

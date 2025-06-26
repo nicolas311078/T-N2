@@ -90,7 +90,7 @@ public class UsuarioController {
     })
     public ResponseEntity<?> eliminar(@PathVariable Integer id) {
         try {
-            usuarioService.delete(id);
+            usuarioService.deleteById(id);
             return ResponseEntity.noContent().build();
         } catch (Exception e ) {
             return ResponseEntity.notFound().build();
