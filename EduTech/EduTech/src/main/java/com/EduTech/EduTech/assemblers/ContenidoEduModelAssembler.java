@@ -3,9 +3,11 @@ import com.EduTech.EduTech.controller.ContenidoEduControllerV2;
 import com.EduTech.EduTech.model.ContenidoEdu;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.server.RepresentationModelAssembler;
+import org.springframework.stereotype.Component;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
+@Component
 public class ContenidoEduModelAssembler implements RepresentationModelAssembler<ContenidoEdu, EntityModel<ContenidoEdu>> {
     @Override
     public EntityModel<ContenidoEdu> toModel(ContenidoEdu contenidoEdu) {

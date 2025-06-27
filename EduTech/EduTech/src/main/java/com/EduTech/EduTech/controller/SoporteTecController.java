@@ -8,6 +8,7 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +18,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/soporte")
+@Tag( name= "Soporte", description = "Operaciones Relacionadas con los soportes")
 public class SoporteTecController {
 
     @Autowired
@@ -64,7 +66,7 @@ public class SoporteTecController {
     }
 
     @PutMapping("/{numeroConsulta}")
-    @Operation(summary = "Actualizar un soporte tencnico", description = "Actualiza un soporte tecnico existente")
+    @Operation(summary = "Actualizar un soporte tecnico", description = "Actualiza un soporte tecnico existente")
     @ApiResponses(value= {
             @ApiResponse(responseCode = "200", description = "Soporte tecnico actualizado exitosamente",
                     content =@Content(mediaType = "aplication/json",
@@ -94,7 +96,7 @@ public class SoporteTecController {
     })
     public ResponseEntity<?> eliminar(@PathVariable Integer numeroConsulta) {
         try {
-            soporteTecService.delete(numeroConsulta);
+            soporteTecService.deleteById(numeroConsulta);
             return ResponseEntity.noContent().build();
         } catch (Exception e ) {
             return ResponseEntity.notFound().build();
