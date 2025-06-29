@@ -75,7 +75,7 @@ public class SoporteTecServiceTest {
 
         doNothing().when(soporteTecRepository).deleteById(numeroConsulta);
 
-        soporteTecService.delete(1);
+        soporteTecService.deleteById(1);
 
         verify(soporteTecRepository, times(1)).deleteById(numeroConsulta);
     }

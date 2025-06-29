@@ -72,7 +72,7 @@ public class UsuarioServiceTest {
 
         doNothing().when(usuarioRepository).deleteById(id);
 
-        usuarioService.delete(id);
+        usuarioService.deleteById(id);
 
         verify(usuarioRepository, times(1)).deleteById(id);
     }
